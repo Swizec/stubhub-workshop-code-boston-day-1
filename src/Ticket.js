@@ -33,13 +33,19 @@ class Ticket extends Component {
             N: this.state.N + 1
         });
 
+    hideMe = () => {
+        const { hideTicket, info: { id } } = this.props;
+        hideTicket({ id });
+    };
+
     render() {
         const {
-            info: { imageUrl, name, description, eventDateLocal }
+            info: { imageUrl, name, description, eventDateLocal },
+            hideTicket
         } = this.props;
 
         return (
-            <TicketStyle onClick={this.inc}>
+            <TicketStyle>
                 <Thumbnail src={imageUrl} />
                 <TicketMeta>
                     <h2>
@@ -48,6 +54,7 @@ class Ticket extends Component {
                     <p>{format(eventDateLocal, "ddd Do MMMM, hh:mma")}</p>
                     <p>{description}</p>
                 </TicketMeta>
+                <button onClick={this.hideMe}>Hide Me</button>
             </TicketStyle>
         );
     }
