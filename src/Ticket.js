@@ -10,6 +10,19 @@ const TicketStyle = styled.div`
     align-items: center;
 `;
 
+const TicketMeta = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+`;
+
+const Thumbnail = styled.img`
+    display: flex;
+    flex: 1;
+    width: 350px;
+`;
+
 class Ticket extends Component {
     state = {
         N: 0
@@ -27,14 +40,14 @@ class Ticket extends Component {
 
         return (
             <TicketStyle onClick={this.inc}>
-                <img src={imageUrl} style={{ width: "350px" }} />
-                <div>
+                <Thumbnail src={imageUrl} />
+                <TicketMeta>
                     <h2>
                         {name} - <span>{this.state.N}</span>
                     </h2>
                     <p>{format(eventDateLocal, "ddd Do MMMM, hh:mma")}</p>
                     <p>{description}</p>
-                </div>
+                </TicketMeta>
             </TicketStyle>
         );
     }
